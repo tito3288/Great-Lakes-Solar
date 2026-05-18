@@ -1,0 +1,68 @@
+---
+const faqs = [
+  {
+    q: "How do I know if solar is worth exploring?",
+    a: "If you own your home, have roof space, and want more energy control, a consultation can clarify fit.",
+  },
+  {
+    q: "Do I need to understand solar technology first?",
+    a: "No. We explain system design, installation steps, and key decisions in plain homeowner language.",
+  },
+  {
+    q: "Can you promise savings or incentives?",
+    a: "No blanket promises. Your quote conversation should be based on your home, utility, and current program availability.",
+  },
+];
+---
+
+<section id="faq" class="py-16 sm:py-20" aria-labelledby="faq-heading">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div data-reveal="fade-up">
+      <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">FAQs</p>
+      <h2 id="faq-heading" class="text-4xl sm:text-6xl font-semibold mt-4 mb-8">
+        Questions worth asking.
+      </h2>
+    </div>
+    <div class="space-y-4" data-reveal-stagger="100">
+      {
+        faqs.map((item, i) => {
+          const id = `faq-${i}`;
+          return (
+            <details class="faq bg-white rounded-2xl p-6 group" data-reveal="fade-up">
+              <summary
+                class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                aria-controls={id}
+              >
+                <span>{item.q}</span>
+                <span
+                  class="faq-toggle text-2xl leading-none select-none text-teal"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </summary>
+              <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                {item.a}
+              </p>
+            </details>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

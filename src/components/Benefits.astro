@@ -1,0 +1,86 @@
+---
+const benefits = [
+  {
+    number: "01",
+    title: "Understand your energy picture",
+    body: "Solar can give homeowners more control over how energy is produced and used. We help translate usage, roof conditions, and goals into a practical conversation.",
+    cardClass: "bg-white",
+    badgeClass: "bg-amber/20 text-amber",
+    bodyClass: "text-slate-600",
+  },
+  {
+    number: "02",
+    title: "Plan for long-term stability",
+    body: "While outcomes vary, solar may support more predictable energy planning over time. We focus on realistic scenarios rather than one-size-fits-all promises.",
+    cardClass: "bg-sand",
+    badgeClass: "bg-white/70 text-teal",
+    bodyClass: "text-slate-700",
+  },
+  {
+    number: "03",
+    title: "Choose cleaner power at home",
+    body: "A rooftop system can help your household use renewable energy and make a meaningful clean-energy home improvement.",
+    cardClass: "bg-white",
+    badgeClass: "bg-teal/10 text-teal",
+    bodyClass: "text-slate-600",
+  },
+];
+---
+
+<section id="benefits" class="py-16 sm:py-20 lg:py-24" aria-labelledby="benefits-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div data-reveal="fade-up">
+        <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">Benefits</p>
+        <h2
+          id="benefits-heading"
+          class="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight font-semibold mt-4 max-w-4xl"
+        >
+          A calm, custom approach to deciding whether solar belongs on your roof.
+        </h2>
+        <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl">
+          We organize the big questions into a clear homeowner-first conversation, so the
+          benefits feel practical—not overwhelming.
+        </p>
+        <div class="mt-8 flex items-center gap-3 text-sm font-semibold text-teal">
+          <span
+            class="h-10 w-10 rounded-full bg-teal/10 flex items-center justify-center shrink-0"
+            aria-hidden="true"
+          >
+            ✓
+          </span>
+          Roof-aware guidance, realistic expectations, and cleaner energy planning.
+        </div>
+      </div>
+
+      <ul
+        class="mt-12 sm:mt-16 grid gap-5 lg:gap-6 list-none p-0"
+        data-reveal-stagger="140"
+      >
+        {
+          benefits.map((b) => (
+            <li
+              class={`group ${b.cardClass} rounded-[2rem] p-6 sm:p-8 lg:p-9 border border-black/5 shadow-sm hover:shadow-md transition sm:min-h-[220px] flex items-center`}
+              data-reveal="fade-up"
+            >
+              <div class="grid md:grid-cols-[auto_1fr] gap-5 lg:gap-7 items-start w-full">
+                <div
+                  class={`h-12 w-12 rounded-2xl ${b.badgeClass} flex items-center justify-center text-lg font-bold`}
+                  aria-hidden="true"
+                >
+                  {b.number}
+                </div>
+                <div>
+                  <h3 class="text-2xl sm:text-3xl font-semibold leading-tight">
+                    {b.title}
+                  </h3>
+                  <p class={`mt-3 ${b.bodyClass} text-lg leading-relaxed`}>{b.body}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

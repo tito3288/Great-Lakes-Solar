@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.jpg";
+---
+
+<header class="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-black/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+    <a href="/" class="inline-flex items-center" aria-label="Great Lakes Solar — home">
+      <Image
+        src={logo}
+        alt="Great Lakes Solar logo"
+        class="h-12 sm:h-14 w-auto max-w-[210px] object-contain"
+        widths={[210, 420]}
+        sizes="210px"
+        loading="eager"
+      />
+    </a>
+
+    <nav
+      class="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider"
+      aria-label="Primary"
+    >
+      <a href="/" class="hover:text-teal transition-colors">Home</a>
+      <a href="/services" class="hover:text-teal transition-colors">Services</a>
+      <a href="/about" class="hover:text-teal transition-colors">About</a>
+      <a href="/contact" class="hover:text-teal transition-colors">Contact</a>
+      <a
+        href="#consult"
+        class="bg-ink text-white px-5 py-3 rounded-full normal-case tracking-normal font-semibold hover:bg-ink/90 transition-colors"
+      >
+        Get a Quote
+      </a>
+    </nav>
+
+    <button
+      id="menuBtn"
+      class="md:hidden border border-black/10 rounded-lg p-2"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden px-4 pb-4 bg-cream">
+    <a class="block py-3 border-b border-black/10" href="/">Home</a>
+    <a class="block py-3 border-b border-black/10" href="/services">Services</a>
+    <a class="block py-3 border-b border-black/10" href="/about">About</a>
+    <a class="block py-3 border-b border-black/10" href="/contact">Contact</a>
+    <a
+      class="block mt-3 text-center bg-ink text-white rounded-full py-3 font-semibold"
+      href="#consult"
+    >
+      Get a Quote
+    </a>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      const isHidden = mobileMenu.classList.toggle("hidden");
+      menuBtn.setAttribute("aria-expanded", String(!isHidden));
+      menuBtn.setAttribute("aria-label", isHidden ? "Open menu" : "Close menu");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open menu");
+      });
+    });
+  }
+</script>

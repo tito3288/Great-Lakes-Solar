@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import heroAerial from "../assets/hero-aerial.jpeg";
+---
+
+<section class="relative" aria-labelledby="hero-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8 lg:py-16">
+    <div
+      class="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden min-h-[560px] sm:min-h-[650px] flex items-end"
+    >
+      <Image
+        src={heroAerial}
+        alt="Cinematic aerial photo of solar panels on a residential roof"
+        class="absolute inset-0 w-full h-full object-cover"
+        widths={[640, 960, 1280, 1920]}
+        sizes="(min-width: 1280px) 1280px, 100vw"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div
+        class="relative p-5 sm:p-10 lg:p-14 grid lg:grid-cols-5 gap-5 sm:gap-8 w-full items-end"
+      >
+        <div class="lg:col-span-3 text-white" data-reveal="fade-up">
+          <p
+            class="text-[11px] sm:text-xs uppercase tracking-[.25em] mb-3 sm:mb-4 text-white/75"
+          >
+            Solar designed around your home
+          </p>
+          <h1
+            id="hero-heading"
+            class="text-[2.45rem] sm:text-7xl lg:text-8xl leading-[.94] sm:leading-[.9] tracking-tight font-semibold"
+          >
+            Personal guidance for a smarter solar decision.
+          </h1>
+          <p class="mt-4 sm:mt-6 max-w-2xl text-base sm:text-xl text-white/80">
+            Great Lakes Solar helps homeowners understand roof fit, energy goals,
+            system design, and installation next steps without jargon or pressure.
+          </p>
+        </div>
+
+        <div
+          id="consult"
+          class="lg:col-span-2 bg-white rounded-[1.5rem] sm:rounded-[1.75rem] p-5 sm:p-8 shadow-2xl text-ink"
+          data-reveal="fade-up"
+          style="--reveal-delay: 180ms;"
+        >
+          <p class="text-[11px] sm:text-xs uppercase tracking-[.2em] text-teal font-bold">
+            Private consultation
+          </p>
+          <h2 class="text-2xl sm:text-3xl leading-tight font-semibold mt-2 sm:mt-3">
+            Tell us what you want solar to solve.
+          </h2>
+          <form class="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3" novalidate>
+            <label class="block">
+              <span class="sr-only">Name</span>
+              <input
+                type="text"
+                name="name"
+                class="w-full bg-cream rounded-xl px-4 py-2.5 sm:py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                placeholder="Name"
+                required
+              />
+            </label>
+            <label class="block">
+              <span class="sr-only">ZIP code</span>
+              <input
+                type="text"
+                name="zip"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                class="w-full bg-cream rounded-xl px-4 py-2.5 sm:py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                placeholder="ZIP code"
+                required
+              />
+            </label>
+            <label class="block">
+              <span class="sr-only">What you’re looking for</span>
+              <select
+                name="intent"
+                class="w-full bg-cream rounded-xl px-4 py-2.5 sm:py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+              >
+                <option>I want a solar quote</option>
+                <option>I have questions first</option>
+                <option>I’m planning a future project</option>
+              </select>
+            </label>
+            <button
+              type="submit"
+              class="w-full bg-amber rounded-xl py-3 font-bold hover:bg-amber/90 transition"
+            >
+              Start My Consultation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Discovery",
+    body: "Share your address, energy priorities, and solar questions.",
+  },
+  {
+    number: "02",
+    title: "Design direction",
+    body: "Review system fit, roof considerations, and quote-ready details.",
+  },
+  {
+    number: "03",
+    title: "Installation coordination",
+    body: "Move forward with clear communication and organized next steps.",
+  },
+];
+---
+
+<section id="process" class="py-16 sm:py-20" aria-labelledby="process-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div data-reveal="fade-up">
+      <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">Process</p>
+      <h2 id="process-heading" class="text-4xl sm:text-6xl font-semibold mt-4 mb-10">
+        Your guided route from curiosity to quote.
+      </h2>
+    </div>
+    <ol class="grid md:grid-cols-3 gap-8 md:gap-5 list-none p-0" data-reveal-stagger="140">
+      {
+        steps.map((s) => (
+          <li class="border-t-2 border-ink pt-6" data-reveal="fade-up">
+            <span class="text-5xl text-amber font-semibold" aria-hidden="true">
+              {s.number}
+            </span>
+            <h3 class="text-2xl font-semibold mt-5">
+              <span class="sr-only">{`Step ${s.number}: `}</span>
+              {s.title}
+            </h3>
+            <p class="text-slate-600 mt-3">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

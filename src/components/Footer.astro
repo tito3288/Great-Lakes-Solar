@@ -1,0 +1,110 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.jpg";
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
+const explore = [
+  { label: "Benefits", href: "/#benefits" },
+  { label: "Process", href: "/#process" },
+  { label: "FAQs", href: "/#faq" },
+];
+---
+
+<footer class="bg-white border-t border-black/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
+    <div class="grid gap-10 sm:gap-12 sm:grid-cols-2 lg:grid-cols-12">
+      <div class="lg:col-span-5" data-reveal="fade-up">
+        <Image
+          src={logo}
+          alt="Great Lakes Solar logo"
+          class="h-12 sm:h-14 w-auto max-w-[210px] object-contain"
+          widths={[210, 420]}
+          sizes="210px"
+          loading="lazy"
+        />
+        <p class="mt-5 text-slate-600 max-w-md leading-relaxed">
+          Residential solar consultations, quote requests, system design
+          direction, and installation coordination.
+        </p>
+      </div>
+
+      <nav
+        class="lg:col-span-2"
+        aria-labelledby="footer-quick-links"
+        data-reveal="fade-up"
+      >
+        <h2
+          id="footer-quick-links"
+          class="text-xs uppercase tracking-[.25em] font-bold text-ink"
+        >
+          Quick Links
+        </h2>
+        <ul class="mt-5 space-y-3 text-slate-600">
+          {
+            quickLinks.map((l) => (
+              <li>
+                <a href={l.href} class="hover:text-teal transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav
+        class="lg:col-span-2"
+        aria-labelledby="footer-explore"
+        data-reveal="fade-up"
+      >
+        <h2
+          id="footer-explore"
+          class="text-xs uppercase tracking-[.25em] font-bold text-ink"
+        >
+          Explore
+        </h2>
+        <ul class="mt-5 space-y-3 text-slate-600">
+          {
+            explore.map((l) => (
+              <li>
+                <a href={l.href} class="hover:text-teal transition-colors">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="lg:col-span-3" data-reveal="fade-up">
+        <h2 class="text-xs uppercase tracking-[.25em] font-bold text-ink">
+          Get Started
+        </h2>
+        <p class="mt-5 text-slate-600 leading-relaxed">
+          Ready to talk through your roof, your goals, and your options?
+        </p>
+        <a
+          href="/#consult"
+          class="mt-5 inline-flex bg-ink text-white rounded-full px-6 py-3 font-semibold hover:bg-ink/90 transition-colors"
+        >
+          Schedule a Consultation
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 sm:mt-14 pt-6 border-t border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500"
+    >
+      <p>&copy; {year} Great Lakes Solar. All rights reserved.</p>
+      <p>Residential solar in the Great Lakes region.</p>
+    </div>
+  </div>
+</footer>
