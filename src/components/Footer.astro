@@ -1,7 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../assets/logo.jpg";
-
 const year = new Date().getFullYear();
 
 const quickLinks = [
@@ -25,12 +22,10 @@ const services = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
     <div class="grid gap-10 sm:gap-12 sm:grid-cols-2 lg:grid-cols-12">
       <div class="lg:col-span-5" data-reveal="fade-up">
-        <Image
-          src={logo}
+        <img
+          src="/Great%20Solar.png"
           alt="Great Lakes Solar logo"
           class="h-12 sm:h-14 w-auto max-w-[210px] object-contain"
-          widths={[210, 420]}
-          sizes="210px"
           loading="lazy"
         />
         <p class="mt-5 text-slate-600 max-w-md leading-relaxed">
