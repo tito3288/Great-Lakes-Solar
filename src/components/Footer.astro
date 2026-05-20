@@ -6,15 +6,18 @@ const year = new Date().getFullYear();
 
 const quickLinks = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  { label: "All Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
-const explore = [
-  { label: "Benefits", href: "/#benefits" },
-  { label: "Process", href: "/#process" },
-  { label: "FAQs", href: "/#faq" },
+const services = [
+  { label: "Solar", href: "/services/solar" },
+  { label: "Roofing", href: "/services/roofing" },
+  { label: "Windows", href: "/services/windows" },
+  { label: "Doors", href: "/services/doors" },
+  { label: "EV Chargers", href: "/services/ev-chargers" },
+  { label: "Tree Services", href: "/services/tree-services" },
 ];
 ---
 
@@ -31,8 +34,12 @@ const explore = [
           loading="lazy"
         />
         <p class="mt-5 text-slate-600 max-w-md leading-relaxed">
-          Residential solar consultations, quote requests, system design
-          direction, and installation coordination.
+          Solar, roofing, windows, doors, EV chargers, and tree services for
+          homeowners across the Great Lakes region. One licensed contractor for
+          the upgrades around your roof.
+        </p>
+        <p class="mt-5 text-xs uppercase tracking-[.2em] text-slate-500">
+          Powered by Universal Solar Direct
         </p>
       </div>
 
@@ -45,7 +52,7 @@ const explore = [
           id="footer-quick-links"
           class="text-xs uppercase tracking-[.25em] font-bold text-ink"
         >
-          Quick Links
+          Site
         </h2>
         <ul class="mt-5 space-y-3 text-slate-600">
           {
@@ -62,18 +69,18 @@ const explore = [
 
       <nav
         class="lg:col-span-2"
-        aria-labelledby="footer-explore"
+        aria-labelledby="footer-services"
         data-reveal="fade-up"
       >
         <h2
-          id="footer-explore"
+          id="footer-services"
           class="text-xs uppercase tracking-[.25em] font-bold text-ink"
         >
-          Explore
+          Services
         </h2>
         <ul class="mt-5 space-y-3 text-slate-600">
           {
-            explore.map((l) => (
+            services.map((l) => (
               <li>
                 <a href={l.href} class="hover:text-teal transition-colors">
                   {l.label}
@@ -92,7 +99,7 @@ const explore = [
           Ready to talk through your roof, your goals, and your options?
         </p>
         <a
-          href="/#consult"
+          href="/contact"
           class="mt-5 inline-flex bg-ink text-white rounded-full px-6 py-3 font-semibold hover:bg-ink/90 transition-colors"
         >
           Schedule a Consultation
@@ -104,7 +111,7 @@ const explore = [
       class="mt-12 sm:mt-14 pt-6 border-t border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500"
     >
       <p>&copy; {year} Great Lakes Solar. All rights reserved.</p>
-      <p>Residential solar in the Great Lakes region.</p>
+      <p>Licensed, bonded, and insured. Serving homeowners across the Great Lakes region.</p>
     </div>
   </div>
 </footer>

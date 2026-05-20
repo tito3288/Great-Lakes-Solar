@@ -1,0 +1,273 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceHero from "../components/ServiceHero.astro";
+---
+
+<BaseLayout
+  title="Contact | Great Lakes Solar"
+  description="Tell us about your project. We respond within one business day with next steps for solar, roofing, windows, doors, EV chargers, or tree services."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Contact"
+      heading="Let’s talk about your project."
+      subhead="Tell us what you’re trying to upgrade. We respond within one business day with next steps — no pressure to sign on the spot."
+      image="/IMG_4830.jpeg"
+      imageAlt="Close-up of a solar panel array on a residential metal roof"
+      hideCta={true}
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="contact-form-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+          <div
+            class="lg:col-span-3 bg-white rounded-[2rem] p-6 sm:p-10 border border-black/5 shadow-sm"
+            data-reveal="fade-up"
+          >
+            <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+              Send a message
+            </p>
+            <h2
+              id="contact-form-heading"
+              class="text-3xl sm:text-4xl font-semibold mt-3 leading-tight"
+            >
+              Start with the basics.
+            </h2>
+            <p class="mt-3 text-slate-600 leading-relaxed">
+              The more you tell us up front, the better the conversation when we
+              call you back.
+            </p>
+
+            {/* TODO: wire submit handler to Resend (POST to /api/contact) */}
+            <form
+              id="contactForm"
+              class="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2"
+              action="#"
+              method="post"
+            >
+              <label class="block sm:col-span-2">
+                <span class="text-sm font-semibold text-ink">Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  autocomplete="name"
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                  placeholder="Jane Homeowner"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-semibold text-ink">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                  placeholder="you@example.com"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-semibold text-ink">
+                  Phone <span class="text-slate-400 font-normal">(optional)</span>
+                </span>
+                <input
+                  type="tel"
+                  name="phone"
+                  autocomplete="tel"
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                  placeholder="(555) 555-5555"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-semibold text-ink">ZIP code</span>
+                <input
+                  type="text"
+                  name="zip"
+                  required
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  autocomplete="postal-code"
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                  placeholder="49503"
+                />
+              </label>
+
+              <label class="block">
+                <span class="text-sm font-semibold text-ink">I’m interested in</span>
+                <select
+                  name="service"
+                  required
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60"
+                >
+                  <option value="solar">Solar + battery</option>
+                  <option value="roofing">Roofing</option>
+                  <option value="windows">Windows</option>
+                  <option value="doors">Doors</option>
+                  <option value="ev-charger">EV charger</option>
+                  <option value="tree-services">Tree trimming or removal</option>
+                  <option value="not-sure">Not sure yet — I have questions</option>
+                </select>
+              </label>
+
+              <label class="block sm:col-span-2">
+                <span class="text-sm font-semibold text-ink">Message</span>
+                <textarea
+                  name="message"
+                  required
+                  rows="4"
+                  class="mt-2 w-full bg-cream rounded-xl px-4 py-3 border border-black/5 outline-none focus:ring-2 focus:ring-amber/60 resize-y"
+                  placeholder="Tell us about your home, roof, timeline, or anything else worth knowing."
+                ></textarea>
+              </label>
+
+              <div class="sm:col-span-2">
+                <button
+                  type="submit"
+                  class="w-full sm:w-auto bg-amber text-ink rounded-full px-8 py-3.5 font-bold hover:bg-amber/90 transition-colors"
+                >
+                  Send Message
+                </button>
+                <p class="mt-3 text-xs text-slate-500">
+                  By submitting, you agree to be contacted about your project. We
+                  never sell or share your info.
+                </p>
+              </div>
+            </form>
+
+            <div
+              id="contactSuccess"
+              class="hidden mt-2"
+              role="status"
+              aria-live="polite"
+            >
+              <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+                Message received
+              </p>
+              <h3 class="text-3xl sm:text-4xl font-semibold mt-3 leading-tight">
+                Thanks. We’ll be in touch within one business day.
+              </h3>
+              <p class="mt-4 text-slate-600 leading-relaxed">
+                A team member will review your note and reach out to schedule a
+                consultation. If it’s urgent, email us directly at{" "}
+                <a
+                  href="mailto:devon@greatlakessolarpower.com"
+                  class="text-teal underline hover:text-teal/80"
+                >
+                  devon@greatlakessolarpower.com
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+
+          <aside
+            class="lg:col-span-2 lg:sticky lg:top-24"
+            data-reveal="fade-up"
+            style="--reveal-delay: 120ms;"
+          >
+            <div
+              class="bg-ink text-white rounded-[2rem] p-6 sm:p-10 border border-black/5 shadow-sm"
+            >
+              <p class="text-xs uppercase tracking-[.25em] text-amber font-bold">
+                What happens next
+              </p>
+              <h2 class="text-2xl sm:text-3xl font-semibold mt-3 leading-tight">
+                Three steps. No surprises.
+              </h2>
+              <ol class="mt-6 space-y-5 list-none p-0">
+                <li class="flex gap-4">
+                  <span
+                    class="text-amber text-2xl font-semibold leading-none shrink-0"
+                    aria-hidden="true"
+                  >
+                    1
+                  </span>
+                  <div>
+                    <p class="font-semibold">You send this form.</p>
+                    <p class="text-white/70 text-sm mt-1 leading-relaxed">
+                      Takes about a minute. The more detail, the better.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="text-amber text-2xl font-semibold leading-none shrink-0"
+                    aria-hidden="true"
+                  >
+                    2
+                  </span>
+                  <div>
+                    <p class="font-semibold">We respond within one business day.</p>
+                    <p class="text-white/70 text-sm mt-1 leading-relaxed">
+                      A real person reaches out to schedule a walk-through that
+                      fits your day.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="text-amber text-2xl font-semibold leading-none shrink-0"
+                    aria-hidden="true"
+                  >
+                    3
+                  </span>
+                  <div>
+                    <p class="font-semibold">You get a written quote.</p>
+                    <p class="text-white/70 text-sm mt-1 leading-relaxed">
+                      With the guarantees, warranties, and certifications spelled
+                      out. No pressure to sign on the spot.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+
+              <div class="mt-8 pt-6 border-t border-white/10 space-y-3 text-sm text-white/80">
+                <p class="flex items-start gap-3">
+                  <span class="text-amber shrink-0" aria-hidden="true">✉</span>
+                  <a
+                    href="mailto:devon@greatlakessolarpower.com"
+                    class="hover:text-white transition-colors"
+                  >
+                    devon@greatlakessolarpower.com
+                  </a>
+                </p>
+                <p class="flex items-start gap-3">
+                  <span class="text-amber shrink-0" aria-hidden="true">◎</span>
+                  Serving homeowners across the Great Lakes region
+                </p>
+                <p class="flex items-start gap-3">
+                  <span class="text-amber shrink-0" aria-hidden="true">✓</span>
+                  Licensed, bonded, and insured
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Placeholder submit handler. Swap for fetch('/api/contact') when Resend is wired.
+  const form = document.getElementById("contactForm") as HTMLFormElement | null;
+  const success = document.getElementById("contactSuccess");
+
+  if (form && success) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      // Future: collect FormData and POST to a server route that calls Resend.
+      form.classList.add("hidden");
+      success.classList.remove("hidden");
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+</script>

@@ -1,0 +1,90 @@
+---
+interface Props {
+  variant?: "light" | "dark";
+}
+
+const { variant = "light" } = Astro.props;
+
+const partners = [
+  { name: "Tesla", logo: "/logos/tesla.svg" },
+  { name: "SolarEdge", logo: "/logos/solaredge.svg" },
+  { name: "Enphase", logo: "/logos/enphase.svg" },
+  { name: "Franklin", logo: "/logos/franklin.svg" },
+  { name: "GM Energy", logo: "/logos/gm-energy.svg" },
+];
+
+const badges = [
+  "Top 20 US Solar Company",
+  "15 Years In Business",
+  "Licensed, Bonded, Insured",
+];
+
+const sectionClass =
+  variant === "dark"
+    ? "py-12 sm:py-16 bg-ink text-white"
+    : "py-12 sm:py-16 bg-cream";
+
+const labelClass = variant === "dark" ? "text-amber" : "text-teal";
+const dividerClass =
+  variant === "dark" ? "border-white/10" : "border-black/10";
+const badgeTextClass =
+  variant === "dark" ? "text-white/80" : "text-slate-600";
+const logoBgClass =
+  variant === "dark" ? "bg-white/5" : "bg-white";
+---
+
+<section class={sectionClass} aria-labelledby="certifications-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center" data-reveal="fade-up">
+      <p class={`text-xs uppercase tracking-[.25em] font-bold ${labelClass}`}>
+        Certified & credentialed
+      </p>
+      <h2
+        id="certifications-heading"
+        class="text-2xl sm:text-3xl font-semibold mt-3"
+      >
+        Partnered with the names that set the standard.
+      </h2>
+    </div>
+
+    <ul
+      class="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 list-none p-0"
+      data-reveal-stagger="80"
+    >
+      {
+        partners.map((p) => (
+          <li
+            class={`${logoBgClass} rounded-2xl h-20 sm:h-24 flex items-center justify-center border border-black/5 shadow-sm`}
+            data-reveal="fade-up"
+          >
+            <img
+              src={p.logo}
+              alt={`${p.name} certified partner`}
+              class="max-h-10 sm:max-h-12 max-w-[70%] object-contain opacity-90"
+              loading="lazy"
+              onerror="this.outerHTML='<span class=\'text-sm font-semibold tracking-wide text-slate-500\'>' + this.alt.replace(' certified partner', '') + '</span>'"
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class={`mt-8 sm:mt-10 pt-6 sm:pt-8 border-t ${dividerClass} flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 text-sm sm:text-base ${badgeTextClass}`}
+      data-reveal="fade-up"
+    >
+      {
+        badges.map((b, i) => (
+          <span class="inline-flex items-center gap-3">
+            {i > 0 && (
+              <span class="text-current opacity-30" aria-hidden="true">
+                •
+              </span>
+            )}
+            <span class="font-medium">{b}</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>

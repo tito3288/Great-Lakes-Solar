@@ -1,0 +1,165 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import Process from "../../components/Process.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const features = [
+  {
+    title: "Trimming for solar production",
+    body: "Branches that shade panels are the silent killer of solar output. We assess the canopy and trim what’s costing you kilowatt-hours.",
+  },
+  {
+    title: "Removal for safety",
+    body: "Dead, dying, or storm-damaged trees over your roof or driveway. Removed cleanly, ground out to grade if you want.",
+  },
+  {
+    title: "Routine maintenance",
+    body: "Annual or biennial trimming to keep growth in check and your sightlines, gutters, and panels clear.",
+  },
+  {
+    title: "Cleanup included",
+    body: "Brush hauled, debris swept, lawn left how we found it. You shouldn’t have to clean up after the crew.",
+  },
+];
+
+const treeFaqs = [
+  {
+    q: "Will trimming actually improve my solar output?",
+    a: "Often by a lot. Even partial shading on a few panels can cut a string’s production noticeably. We coordinate trimming with the solar team so it’s done right.",
+  },
+  {
+    q: "Do you remove the stumps too?",
+    a: "Yes if you want — stump grinding is offered as an add-on. Some homeowners prefer to leave the stump; we ask before we grind.",
+  },
+  {
+    q: "Are you insured for tree work?",
+    a: "Yes. Tree work is high-risk, and we carry the insurance to back it up. Ask for the certificate before any crew touches your property — from us or anyone else.",
+  },
+];
+---
+
+<BaseLayout
+  title="Tree Services | Great Lakes Solar"
+  description="Tree trimming and removal so panels see the sun and your roof stays protected. Licensed, insured, and clean."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Tree Services"
+      heading="Let the sun reach your panels, safely."
+      subhead="Trimming, removal, and cleanup from the same licensed contractor handling your roof and solar. One team, one accountability chain."
+      ctaLabel="Get a Tree Service Quote"
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="tree-features-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            What we offer
+          </p>
+          <h2
+            id="tree-features-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 leading-tight"
+          >
+            Trees that help your home, not threaten it.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600">
+            Shading kills solar production. Falling limbs kill roofs. We handle
+            both, professionally insured, in coordination with the rest of your
+            project.
+          </p>
+        </div>
+
+        <ul
+          class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-2 list-none p-0"
+          data-reveal-stagger="120"
+        >
+          {
+            features.map((f) => (
+              <li
+                class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm"
+                data-reveal="fade-up"
+              >
+                <h3 class="text-2xl font-semibold leading-tight">{f.title}</h3>
+                <p class="mt-3 text-slate-600 leading-relaxed">{f.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Process />
+
+    <section class="py-16 sm:py-20 bg-cream" aria-labelledby="tree-faq-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            Tree Service FAQs
+          </p>
+          <h2
+            id="tree-faq-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 mb-8 leading-tight"
+          >
+            Questions worth asking.
+          </h2>
+        </div>
+        <div class="space-y-4" data-reveal-stagger="100">
+          {
+            treeFaqs.map((item, i) => {
+              const id = `tree-faq-${i}`;
+              return (
+                <details
+                  class="faq bg-white rounded-2xl p-6 group"
+                  data-reveal="fade-up"
+                >
+                  <summary
+                    class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                    aria-controls={id}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      class="faq-toggle text-2xl leading-none select-none text-teal"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                    {item.a}
+                  </p>
+                </details>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Free property walk-through"
+      heading="We’ll tell you what needs to come down, and what doesn’t."
+      body="A free assessment with a real arborist. We mark trees, explain risk, and quote honestly. No clearing for clearing’s sake."
+      ctaLabel="Schedule a Tree Assessment"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

@@ -1,28 +1,43 @@
 ---
-import { Image } from "astro:assets";
-import darkBandRoof from "../assets/dark-band-roof.jpeg";
 ---
 
 <section class="py-16 bg-ink text-white" aria-labelledby="real-home-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 items-center">
     <div data-reveal="fade-left">
       <p class="text-xs uppercase tracking-[.25em] text-amber font-bold">
-        Real-home context
+        Energy independence
       </p>
       <h2 id="real-home-heading" class="text-4xl sm:text-5xl font-semibold mt-4">
-        Design details matter when the system is on your home.
+        Say goodbye to the utility company.
       </h2>
       <p class="text-white/70 text-lg mt-5">
-        We emphasize roof-aware recommendations, approachable education, and a process
-        that respects your home’s look and function.
+        Whole-home battery backup keeps your lights on when the grid drops. Off-grid
+        systems let you leave the utility behind entirely. Roof-mount or ground-mount —
+        we design the setup that fits your property.
       </p>
+      <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-white/85">
+        <li class="flex items-start gap-3">
+          <span class="text-amber font-bold" aria-hidden="true">→</span>
+          Whole-home battery backup
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber font-bold" aria-hidden="true">→</span>
+          Off-grid systems
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber font-bold" aria-hidden="true">→</span>
+          Roof-mount or ground-mount
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-amber font-bold" aria-hidden="true">→</span>
+          Outage-ready in any season
+        </li>
+      </ul>
     </div>
-    <Image
-      src={darkBandRoof}
+    <img
+      src="/real-home-context.jpeg"
       alt="Residential roof with completed solar panel installation"
       class="rounded-[2rem] h-80 w-full object-cover"
-      widths={[480, 720, 960, 1280]}
-      sizes="(min-width: 1024px) 600px, 100vw"
       loading="lazy"
       data-reveal="fade-right"
       style="--reveal-delay: 120ms;"

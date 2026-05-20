@@ -1,0 +1,58 @@
+---
+const guarantees = [
+  {
+    figure: "95%",
+    label: "Power Production Guarantee",
+    body: "If your system doesn’t produce at least 95% of what we projected, we make it right. No fine print, no excuses.",
+  },
+  {
+    figure: "25 yr",
+    label: "Warranty Coverage",
+    body: "A quarter-century of coverage on equipment and workmanship. Built and installed by Universal Solar Direct — 15 years in the field and one of the longest-tenured solar companies in the US.",
+  },
+  {
+    figure: "84.7%",
+    label: "Efficiency After 30 Years",
+    body: "Your panels are guaranteed to still be producing at 84.7% or better three decades from install day.",
+  },
+];
+---
+
+<section class="py-16 sm:py-20" aria-labelledby="guarantees-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl" data-reveal="fade-up">
+      <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+        In writing
+      </p>
+      <h2
+        id="guarantees-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight"
+      >
+        Three guarantees that turn solar from a hope into a contract.
+      </h2>
+    </div>
+
+    <ul
+      class="mt-10 sm:mt-14 grid gap-5 md:grid-cols-3 list-none p-0"
+      data-reveal-stagger="120"
+    >
+      {
+        guarantees.map((g) => (
+          <li
+            class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm flex flex-col"
+            data-reveal="fade-up"
+          >
+            <p
+              class="text-6xl sm:text-7xl font-semibold text-amber leading-none tracking-tight"
+              aria-hidden="true"
+            >
+              {g.figure}
+            </p>
+            <h3 class="text-xl sm:text-2xl font-semibold mt-5">{g.label}</h3>
+            <p class="mt-3 text-slate-600 leading-relaxed">{g.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

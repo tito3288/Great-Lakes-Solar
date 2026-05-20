@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import Process from "../../components/Process.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const features = [
+  {
+    title: "Entry doors",
+    body: "Steel, fiberglass, and solid wood entry doors built to seal tight and stand up to the Great Lakes weather. Custom hardware and finish options.",
+  },
+  {
+    title: "Patio doors",
+    body: "Sliding and French patio doors that bring in light, keep out drafts, and slide smoothly twenty years from now.",
+  },
+  {
+    title: "Storm doors",
+    body: "Add a second layer against winter without sacrificing the look of your entry. Self-storing screens, full-view glass, durable finishes.",
+  },
+  {
+    title: "Professional installation",
+    body: "Tight frames, plumb hinges, clean weatherproofing. Licensed crews, no subcontracting.",
+  },
+];
+
+const doorsFaqs = [
+  {
+    q: "Can a new entry door really save energy?",
+    a: "Yes. Old doors leak air around the frame and through worn weatherstripping. A properly installed modern door tightens that envelope noticeably.",
+  },
+  {
+    q: "Do you replace just the door or the frame too?",
+    a: "Both, depending on condition. Sometimes the existing frame is sound and we can do an insert install; sometimes a full-frame replacement makes more sense. We inspect first and recommend honestly.",
+  },
+  {
+    q: "How long does a door install take?",
+    a: "Most single-door replacements are done in a day. Multi-door projects or full-frame work may take longer — we’ll give you a realistic timeline in the quote.",
+  },
+];
+---
+
+<BaseLayout
+  title="Doors | Great Lakes Solar"
+  description="Entry, patio, and storm doors installed by licensed crews. Tight seals, clean finishes, no subcontractors."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Doors"
+      heading="Doors that close right and stay that way."
+      subhead="Entry, patio, and storm doors — selected for fit, installed for function, finished to last."
+      ctaLabel="Get a Door Quote"
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="doors-features-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            What we offer
+          </p>
+          <h2
+            id="doors-features-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 leading-tight"
+          >
+            Every door, picked and installed by people who care.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600">
+            A door is something you touch every day. We treat it like a finish
+            detail, not a checklist item.
+          </p>
+        </div>
+
+        <ul
+          class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-2 list-none p-0"
+          data-reveal-stagger="120"
+        >
+          {
+            features.map((f) => (
+              <li
+                class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm"
+                data-reveal="fade-up"
+              >
+                <h3 class="text-2xl font-semibold leading-tight">{f.title}</h3>
+                <p class="mt-3 text-slate-600 leading-relaxed">{f.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Process />
+
+    <section class="py-16 sm:py-20 bg-cream" aria-labelledby="doors-faq-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            Door FAQs
+          </p>
+          <h2
+            id="doors-faq-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 mb-8 leading-tight"
+          >
+            Questions worth asking.
+          </h2>
+        </div>
+        <div class="space-y-4" data-reveal-stagger="100">
+          {
+            doorsFaqs.map((item, i) => {
+              const id = `doors-faq-${i}`;
+              return (
+                <details
+                  class="faq bg-white rounded-2xl p-6 group"
+                  data-reveal="fade-up"
+                >
+                  <summary
+                    class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                    aria-controls={id}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      class="faq-toggle text-2xl leading-none select-none text-teal"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                    {item.a}
+                  </p>
+                </details>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Free in-home consultation"
+      heading="Pick the door. We’ll handle the rest."
+      body="We come measure, walk you through your options, and leave you with a written quote. No pressure to decide on the spot."
+      ctaLabel="Schedule a Door Consultation"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

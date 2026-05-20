@@ -1,16 +1,21 @@
 ---
 const faqs = [
   {
-    q: "How do I know if solar is worth exploring?",
-    a: "If you own your home, have roof space, and want more energy control, a consultation can clarify fit.",
+    q: "What does the 95% Power Production Guarantee actually mean?",
+    a: "If your system produces less than 95% of what we projected for the year, we make it right — service, equipment, or compensation. The number is in your contract, not buried in fine print.",
   },
   {
-    q: "Do I need to understand solar technology first?",
-    a: "No. We explain system design, installation steps, and key decisions in plain homeowner language.",
+    q: "What’s covered under the 25-year warranty?",
+    a: "Equipment and workmanship for 25 years, with panels guaranteed at 84.7% efficiency or better after 30. That covers the panels themselves, the inverters, and the labor we put on your roof.",
   },
   {
-    q: "Can you promise savings or incentives?",
-    a: "No blanket promises. Your quote conversation should be based on your home, utility, and current program availability.",
+    q: "Do you handle whole-home backup and off-grid setups?",
+    a: "Yes. We design battery backup systems that keep the whole house powered during outages, and full off-grid systems for homeowners ready to leave the utility behind entirely.",
+  },
+  {
+    q: "What other home services do you offer?",
+    a: "Roofing, windows, doors, EV charger installation, and tree trimming and removal. One licensed contractor for the upgrades that surround a solar install — <a href='/services' class='text-teal underline hover:text-teal/80'>see all services</a>.",
+    html: true,
   },
 ];
 ---
@@ -41,9 +46,17 @@ const faqs = [
                   +
                 </span>
               </summary>
-              <p id={id} class="mt-4 text-slate-600 leading-relaxed">
-                {item.a}
-              </p>
+              {item.html ? (
+                <p
+                  id={id}
+                  class="mt-4 text-slate-600 leading-relaxed"
+                  set:html={item.a}
+                />
+              ) : (
+                <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                  {item.a}
+                </p>
+              )}
             </details>
           );
         })

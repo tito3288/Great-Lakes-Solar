@@ -1,0 +1,76 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Solar",
+    body: "Roof-mount, ground-mount, off-grid, and whole-home battery backup — all backed by a 95% production guarantee and 25-year coverage.",
+    href: "/services/solar",
+    featured: true,
+    image: "/IMG_1469.jpeg",
+    imageAlt: "Residential home with rooftop solar installation",
+  },
+  {
+    number: "02",
+    title: "Roofing",
+    body: "A solid roof is the foundation of a solid solar install. We handle full replacements and repairs.",
+    href: "/services/roofing",
+  },
+  {
+    number: "03",
+    title: "Windows",
+    body: "Energy-efficient windows from Alside Mezzo and other trusted brands.",
+    href: "/services/windows",
+  },
+  {
+    number: "04",
+    title: "Doors",
+    body: "Entry, patio, and storm doors that match the look and tightness your home deserves.",
+    href: "/services/doors",
+  },
+  {
+    number: "05",
+    title: "EV Chargers",
+    body: "Level 2 home charging installed clean — paired with solar or stand-alone.",
+    href: "/services/ev-chargers",
+  },
+  {
+    number: "06",
+    title: "Tree Services",
+    body: "Trimming and removal so panels see the sun and your roof stays protected.",
+    href: "/services/tree-services",
+  },
+];
+---
+
+<section
+  id="services-teaser"
+  class="py-16 sm:py-20 bg-cream"
+  aria-labelledby="services-teaser-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-3xl" data-reveal="fade-up">
+      <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+        More than solar
+      </p>
+      <h2
+        id="services-teaser-heading"
+        class="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight"
+      >
+        One trusted contractor for the upgrades your home needs.
+      </h2>
+      <p class="mt-5 text-lg text-slate-600">
+        Solar is what we’re known for. But we also handle the surrounding work so
+        you’re not chasing five contractors to finish one project.
+      </p>
+    </div>
+
+    <div
+      class="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+      data-reveal-stagger="100"
+    >
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </div>
+</section>

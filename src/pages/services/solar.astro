@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import Guarantees from "../../components/Guarantees.astro";
+import Certifications from "../../components/Certifications.astro";
+import Process from "../../components/Process.astro";
+import Reviews from "../../components/Reviews.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const systemOptions = [
+  {
+    title: "Roof-mount solar",
+    body: "Panels installed flush to your roofline by crews trained on residential pitch and material — preserving your home’s look while maximizing production.",
+  },
+  {
+    title: "Ground-mount solar",
+    body: "When the roof isn’t the right fit, we engineer ground-mount arrays on your property — oriented and tilted for peak output.",
+  },
+  {
+    title: "Whole-home battery backup",
+    body: "Tesla Powerwall, Enphase, and Franklin storage systems keep your essentials running through outages. Charge from the panels, discharge when you need it.",
+  },
+  {
+    title: "Off-grid systems",
+    body: "For homeowners ready to leave the utility behind entirely. We design fully off-grid setups sized to your real-world usage.",
+  },
+];
+
+const solarFaqs = [
+  {
+    q: "What does the 95% Power Production Guarantee mean?",
+    a: "If your system produces less than 95% of what we projected for the year, we service it, replace equipment, or compensate you. It’s a clause in your contract, not a marketing line.",
+  },
+  {
+    q: "What’s included in the 25-year warranty?",
+    a: "Panels, inverters, racking, and the workmanship our crews put on your roof. Panels are also guaranteed at 84.7% efficiency or better after 30 years.",
+  },
+  {
+    q: "Do I need a new roof before solar?",
+    a: "Sometimes. We inspect the roof before designing the system. If it needs work, we can handle the roofing too — see /services/roofing.",
+    html: true,
+  },
+  {
+    q: "Roof-mount or ground-mount — which fits my property?",
+    a: "Depends on roof orientation, shading, and yard space. We walk through both options during your consultation and recommend the one that produces more power for your specific site.",
+  },
+];
+---
+
+<BaseLayout
+  title="Solar | Great Lakes Solar"
+  description="95% Power Production Guarantee. 25-year warranties. Whole-home battery backup. Tesla, SolarEdge, Enphase, Franklin, and GM Energy certified."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Solar"
+      heading="Solar guaranteed to work."
+      subhead="A 95% Power Production Guarantee. 25-year warranties on equipment and workmanship. 84.7% efficiency guaranteed after 30 years. The numbers are in writing — not in the sales pitch."
+      image="/hero.JPG"
+      imageAlt="Aerial view of solar panels installed on a residential roof"
+      ctaLabel="Get a Solar Quote"
+    />
+
+    <Guarantees />
+
+    <section class="py-16 sm:py-20 bg-sand" aria-labelledby="systems-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            System options
+          </p>
+          <h2
+            id="systems-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 leading-tight"
+          >
+            Designed around your home. Not a template.
+          </h2>
+          <p class="mt-5 text-lg text-slate-700">
+            Every property is different. Roof-mount, ground-mount, battery
+            backup, off-grid — we engineer the right setup for your roof,
+            usage, and goals.
+          </p>
+        </div>
+
+        <ul
+          class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-2 list-none p-0"
+          data-reveal-stagger="120"
+        >
+          {
+            systemOptions.map((s) => (
+              <li
+                class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm"
+                data-reveal="fade-up"
+              >
+                <h3 class="text-2xl font-semibold leading-tight">{s.title}</h3>
+                <p class="mt-3 text-slate-600 leading-relaxed">{s.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Certifications />
+
+    <Process />
+
+    <Reviews />
+
+    <section class="py-16 sm:py-20" aria-labelledby="solar-faq-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            Solar FAQs
+          </p>
+          <h2
+            id="solar-faq-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 mb-8 leading-tight"
+          >
+            Questions worth asking.
+          </h2>
+        </div>
+        <div class="space-y-4" data-reveal-stagger="100">
+          {
+            solarFaqs.map((item, i) => {
+              const id = `solar-faq-${i}`;
+              return (
+                <details
+                  class="faq bg-white rounded-2xl p-6 group"
+                  data-reveal="fade-up"
+                >
+                  <summary
+                    class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                    aria-controls={id}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      class="faq-toggle text-2xl leading-none select-none text-teal"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  {item.html ? (
+                    <p
+                      id={id}
+                      class="mt-4 text-slate-600 leading-relaxed"
+                      set:html={item.a}
+                    />
+                  ) : (
+                    <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                      {item.a}
+                    </p>
+                  )}
+                </details>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Ready when you are"
+      heading="Get the guarantees in writing."
+      body="A free consultation gets you a real production projection, the certifications behind it, and the contract language that backs it up."
+      ctaLabel="Start a Solar Consultation"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

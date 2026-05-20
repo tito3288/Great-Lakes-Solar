@@ -1,17 +1,13 @@
 ---
-import { Image } from "astro:assets";
-import storyInstall from "../assets/story-install.jpeg";
 ---
 
 <section class="py-16 bg-white" aria-labelledby="story-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 items-center">
     <div data-reveal="fade-right">
-      <Image
-        src={storyInstall}
+      <img
+        src="/Homeowner-story.jpeg"
         alt="Close view of solar installation workmanship on a home"
         class="rounded-[2rem] h-[360px] sm:h-[460px] w-full object-cover"
-        widths={[480, 720, 960, 1280]}
-        sizes="(min-width: 1024px) 600px, 100vw"
         loading="lazy"
       />
     </div>
@@ -20,13 +16,13 @@ import storyInstall from "../assets/story-install.jpeg";
         Homeowner story
       </p>
       <h2 id="story-heading" class="text-4xl sm:text-5xl font-semibold mt-4">
-        The best solar experience starts with feeling informed.
+        Promises in writing. Performance on the roof.
       </h2>
       <figure class="mt-8 bg-cream rounded-[2rem] p-6 sm:p-8 border border-black/5">
         <blockquote class="text-2xl leading-relaxed">
           <p>
-            “A good consultation should answer the questions homeowners actually have:
-            What fits my roof? What should I expect? What happens next?”
+            “We don’t hedge. If your system doesn’t produce what we said it would,
+            we fix it. That promise is the difference between a quote and a contract.”
           </p>
         </blockquote>
         <figcaption class="mt-5 text-sm uppercase tracking-widest text-slate-500">

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceHero from "../components/ServiceHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const photos = [
+  { src: "/IMG_0140.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_0508.png", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_1503.png", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_1689.PNG", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_1814.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_4808.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_5664.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_6914.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_6915.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_6919.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_8347.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_9413.jpeg", alt: "Great Lakes Solar project photo" },
+  { src: "/IMG_9474.jpeg", alt: "Great Lakes Solar project photo" },
+  {
+    src: "/dji_fly_20250808_192822_215_1754697363892_photo.JPG",
+    alt: "Aerial drone photo of a Great Lakes Solar installation",
+  },
+];
+---
+
+<BaseLayout
+  title="Gallery | Great Lakes Solar"
+  description="Real Great Lakes Solar installations across the Great Lakes region — roofs, panels, ground-mount systems, and the homes behind them."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Gallery"
+      heading="Real installs. Real homes."
+      subhead="A look at the projects we’ve put on roofs, in yards, and on properties across the Great Lakes region. Each one designed for the home it sits on."
+      hideCta={true}
+    />
+
+    <section class="py-12 sm:py-16 lg:py-20" aria-labelledby="gallery-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <h2 id="gallery-heading" class="sr-only">Project photos</h2>
+
+        <div
+          class="columns-1 sm:columns-2 lg:columns-3 gap-5 sm:gap-6 [column-fill:_balance]"
+          data-reveal-stagger="80"
+        >
+          {
+            photos.map((photo) => (
+              <figure
+                class="mb-5 sm:mb-6 break-inside-avoid overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-black/5 shadow-sm bg-white"
+                data-reveal="fade-up"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  class="block w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="See yourself in the gallery"
+      heading="Your home could be next."
+      body="If you like what you’re seeing, let’s talk about what a system would look like on your roof — or alongside it."
+      ctaLabel="Start a Consultation"
+    />
+  </main>
+  <Footer />
+</BaseLayout>

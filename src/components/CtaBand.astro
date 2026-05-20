@@ -1,0 +1,45 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  eyebrow = "Start a conversation",
+  heading,
+  body,
+  ctaLabel = "Schedule a Consultation",
+  ctaHref = "/contact",
+} = Astro.props;
+---
+
+<section class="py-16 sm:py-20" aria-labelledby="cta-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div
+      class="bg-ink text-white rounded-[2rem] p-8 sm:p-12 lg:p-16 grid lg:grid-cols-[1fr_auto] gap-8 items-center"
+      data-reveal="fade-up"
+    >
+      <div>
+        <p class="text-xs uppercase tracking-[.25em] text-amber font-bold">
+          {eyebrow}
+        </p>
+        <h2
+          id="cta-heading"
+          class="text-3xl sm:text-5xl font-semibold mt-4 leading-tight"
+        >
+          {heading}
+        </h2>
+        {body && <p class="mt-5 text-white/70 text-lg max-w-2xl">{body}</p>}
+      </div>
+      <a
+        href={ctaHref}
+        class="inline-flex items-center justify-center bg-amber text-ink rounded-full px-7 py-4 font-bold hover:bg-amber/90 transition-colors whitespace-nowrap"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

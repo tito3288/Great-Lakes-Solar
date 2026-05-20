@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import Process from "../../components/Process.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const features = [
+  {
+    title: "Alside Mezzo — featured line",
+    body: "Premium vinyl windows engineered for energy efficiency and weather resilience. Industry-leading insulating glass packages and a clean modern profile.",
+  },
+  {
+    title: "Energy-efficient glass",
+    body: "Low-E coatings, argon-filled chambers, and Energy Star–rated configurations that cut drafts and lower utility bills.",
+  },
+  {
+    title: "Style options that fit your home",
+    body: "Double-hung, casement, slider, picture, and bay configurations in finishes that match your exterior — not a generic catalog.",
+  },
+  {
+    title: "Professional installation",
+    body: "Licensed, bonded, and insured crews handle the install. Tight seals, clean trim work, full clean-up — the way it should be done.",
+  },
+];
+
+const windowsFaqs = [
+  {
+    q: "What brands do you carry?",
+    a: "Alside Mezzo is our featured line. We also work with other trusted manufacturers depending on style, budget, and what fits your home.",
+  },
+  {
+    q: "Can I see the Alside Mezzo specs?",
+    a: "Yes — the manufacturer brochure is available <a href='https://www.alside.com/wp-content/uploads/sites/3/2023/12/Alside-Mezzo-East-Coast-Window-Brochure.pdf' target='_blank' rel='noopener' class='text-teal underline hover:text-teal/80'>here</a>. Bring questions to your consultation and we’ll walk through the options that fit your home.",
+    html: true,
+  },
+  {
+    q: "Do you handle full-house replacements?",
+    a: "Yes. Single windows, full-house replacements, and new-construction installs — all in-house, no subcontractors.",
+  },
+];
+---
+
+<BaseLayout
+  title="Windows | Great Lakes Solar"
+  description="Energy-efficient replacement windows including the Alside Mezzo line. Licensed installation across the Great Lakes region."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Windows"
+      heading="Tight seals. Quiet rooms. Lower bills."
+      subhead="Replacement windows — featuring the Alside Mezzo line — installed by licensed crews who care about how it looks when they leave."
+      ctaLabel="Get a Window Quote"
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="windows-features-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            What we offer
+          </p>
+          <h2
+            id="windows-features-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 leading-tight"
+          >
+            Featured: the Alside Mezzo line.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600">
+            We work with several manufacturers, but Mezzo is the one we lead
+            with — energy efficiency, clean profile, and a price point that
+            makes sense for most homes.
+          </p>
+        </div>
+
+        <ul
+          class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-2 list-none p-0"
+          data-reveal-stagger="120"
+        >
+          {
+            features.map((f) => (
+              <li
+                class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm"
+                data-reveal="fade-up"
+              >
+                <h3 class="text-2xl font-semibold leading-tight">{f.title}</h3>
+                <p class="mt-3 text-slate-600 leading-relaxed">{f.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Process />
+
+    <section class="py-16 sm:py-20 bg-cream" aria-labelledby="windows-faq-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            Window FAQs
+          </p>
+          <h2
+            id="windows-faq-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 mb-8 leading-tight"
+          >
+            Questions worth asking.
+          </h2>
+        </div>
+        <div class="space-y-4" data-reveal-stagger="100">
+          {
+            windowsFaqs.map((item, i) => {
+              const id = `windows-faq-${i}`;
+              return (
+                <details
+                  class="faq bg-white rounded-2xl p-6 group"
+                  data-reveal="fade-up"
+                >
+                  <summary
+                    class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                    aria-controls={id}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      class="faq-toggle text-2xl leading-none select-none text-teal"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  {item.html ? (
+                    <p
+                      id={id}
+                      class="mt-4 text-slate-600 leading-relaxed"
+                      set:html={item.a}
+                    />
+                  ) : (
+                    <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                      {item.a}
+                    </p>
+                  )}
+                </details>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Free in-home consultation"
+      heading="Get measured. Get a real quote."
+      body="We come measure, walk you through the Mezzo options and alternatives, and leave you with a written quote — no pressure to sign on the spot."
+      ctaLabel="Schedule a Window Consultation"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

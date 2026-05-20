@@ -1,0 +1,81 @@
+---
+interface Props {
+  eyebrow: string;
+  heading: string;
+  subhead?: string;
+  image?: string;
+  imageAlt?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  hideCta?: boolean;
+}
+
+const {
+  eyebrow,
+  heading,
+  subhead,
+  image,
+  imageAlt = "",
+  ctaLabel = "Start a Consultation",
+  ctaHref = "/contact",
+  hideCta = false,
+} = Astro.props;
+---
+
+<section class="relative" aria-labelledby="service-hero-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8 lg:py-16">
+    <div
+      class="relative rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden min-h-[440px] sm:min-h-[540px] flex items-start bg-ink"
+    >
+      {
+        image && (
+          <img
+            src={image}
+            alt={imageAlt}
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        )
+      }
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/15"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div
+        class="relative p-5 sm:p-10 lg:p-14 max-w-3xl text-white"
+        data-reveal="fade-up"
+      >
+        <p
+          class="text-[11px] sm:text-xs uppercase tracking-[.25em] mb-3 sm:mb-4 text-white/75"
+        >
+          {eyebrow}
+        </p>
+        <h1
+          id="service-hero-heading"
+          class="text-[2.25rem] sm:text-6xl lg:text-7xl leading-[.95] tracking-tight font-semibold"
+        >
+          {heading}
+        </h1>
+        {
+          subhead && (
+            <p class="mt-4 sm:mt-6 max-w-2xl text-base sm:text-xl text-white/80">
+              {subhead}
+            </p>
+          )
+        }
+        {
+          !hideCta && (
+            <a
+              href={ctaHref}
+              class="mt-6 sm:mt-8 inline-flex items-center bg-amber text-ink rounded-full px-6 py-3 font-bold hover:bg-amber/90 transition-colors"
+            >
+              {ctaLabel}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

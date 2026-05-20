@@ -1,0 +1,165 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import ServiceHero from "../../components/ServiceHero.astro";
+import Process from "../../components/Process.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const features = [
+  {
+    title: "Full roof replacements",
+    body: "Tear-off, deck inspection, underlayment, and new shingles — done right the first time so the next project on top (panels, solar attic vents) lands on a solid foundation.",
+  },
+  {
+    title: "Repairs that hold",
+    body: "Leaks, storm damage, missing shingles, flashing failures. We fix the cause, not just the symptom.",
+  },
+  {
+    title: "Pre-solar inspections",
+    body: "Considering panels? We assess roof age, condition, and load capacity before you commit. Better to replace once than disturb a system later.",
+  },
+  {
+    title: "Licensed, bonded, insured",
+    body: "Every crew on your roof is covered. You won’t be holding the bag if something goes wrong.",
+  },
+];
+
+const roofingFaqs = [
+  {
+    q: "Do I need a new roof before adding solar?",
+    a: "If your roof has fewer than 10 years of life left, replacing it before solar is almost always cheaper than removing and reinstalling panels later. We’ll tell you straight after an inspection.",
+  },
+  {
+    q: "How long does a typical replacement take?",
+    a: "Most single-family roofs are done in 1–2 days, weather permitting. We coordinate around solar installs so the two projects don’t conflict.",
+  },
+  {
+    q: "What warranty do you offer?",
+    a: "Manufacturer warranties on the shingles plus our own workmanship warranty on the install. Specifics depend on the product line — we’ll lay it out in the quote.",
+  },
+];
+---
+
+<BaseLayout
+  title="Roofing | Great Lakes Solar"
+  description="Roof replacements, repairs, and pre-solar inspections. Licensed roofing built to last decades."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Roofing"
+      heading="A roof built to outlast the panels on top of it."
+      subhead="Replacements, repairs, and pre-solar inspections from the same licensed contractor who handles the rest of your home."
+      ctaLabel="Get a Roofing Quote"
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="roofing-features-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            What we offer
+          </p>
+          <h2
+            id="roofing-features-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 leading-tight"
+          >
+            The foundation everything else sits on.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600">
+            A roof is the most expensive surface on your house. We treat it
+            like it — careful tear-offs, full deck inspections, and clean
+            installs that hold up.
+          </p>
+        </div>
+
+        <ul
+          class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-2 list-none p-0"
+          data-reveal-stagger="120"
+        >
+          {
+            features.map((f) => (
+              <li
+                class="bg-white rounded-[2rem] p-7 sm:p-8 border border-black/5 shadow-sm"
+                data-reveal="fade-up"
+              >
+                <h3 class="text-2xl font-semibold leading-tight">{f.title}</h3>
+                <p class="mt-3 text-slate-600 leading-relaxed">{f.body}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <Process />
+
+    <section class="py-16 sm:py-20 bg-cream" aria-labelledby="roofing-faq-heading">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            Roofing FAQs
+          </p>
+          <h2
+            id="roofing-faq-heading"
+            class="text-4xl sm:text-5xl font-semibold mt-4 mb-8 leading-tight"
+          >
+            Questions worth asking.
+          </h2>
+        </div>
+        <div class="space-y-4" data-reveal-stagger="100">
+          {
+            roofingFaqs.map((item, i) => {
+              const id = `roofing-faq-${i}`;
+              return (
+                <details
+                  class="faq bg-white rounded-2xl p-6 group"
+                  data-reveal="fade-up"
+                >
+                  <summary
+                    class="list-none flex justify-between items-start gap-4 text-xl font-semibold cursor-pointer"
+                    aria-controls={id}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      class="faq-toggle text-2xl leading-none select-none text-teal"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p id={id} class="mt-4 text-slate-600 leading-relaxed">
+                    {item.a}
+                  </p>
+                </details>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      eyebrow="Free roof inspection"
+      heading="Find out what your roof actually needs."
+      body="We climb up, look closely, and tell you the truth — replace, repair, or wait. No upsell, no scare tactics."
+      ctaLabel="Schedule a Roof Inspection"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq[open] .faq-toggle::before {
+    content: "–";
+  }
+  .faq[open] .faq-toggle {
+    font-size: 0;
+  }
+  .faq[open] .faq-toggle::before {
+    font-size: 1.5rem;
+  }
+</style>

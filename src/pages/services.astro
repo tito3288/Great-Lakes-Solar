@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceHero from "../components/ServiceHero.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Certifications from "../components/Certifications.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Solar",
+    body: "Roof-mount, ground-mount, off-grid, and whole-home battery backup — backed by a 95% production guarantee, 25-year warranties, and certifications from Tesla, SolarEdge, Enphase, Franklin, and GM Energy.",
+    href: "/services/solar",
+    featured: true,
+    image: "/IMG_1469.jpeg",
+    imageAlt: "Residential home with rooftop solar installation",
+  },
+  {
+    number: "02",
+    title: "Roofing",
+    body: "A solid roof is the foundation of a solid solar install. Full replacements, repairs, and pre-solar inspections.",
+    href: "/services/roofing",
+  },
+  {
+    number: "03",
+    title: "Windows",
+    body: "Energy-efficient windows from Alside Mezzo and other trusted brands, professionally installed.",
+    href: "/services/windows",
+  },
+  {
+    number: "04",
+    title: "Doors",
+    body: "Entry, patio, and storm doors that match the look and tightness your home deserves.",
+    href: "/services/doors",
+  },
+  {
+    number: "05",
+    title: "EV Chargers",
+    body: "Level 2 home charging installed clean — paired with solar or stand-alone.",
+    href: "/services/ev-chargers",
+  },
+  {
+    number: "06",
+    title: "Tree Services",
+    body: "Trimming and removal so panels see the sun and your roof stays protected year-round.",
+    href: "/services/tree-services",
+  },
+];
+---
+
+<BaseLayout
+  title="Services | Great Lakes Solar"
+  description="Solar, roofing, windows, doors, EV chargers, and tree services. One licensed contractor for the upgrades around your roof."
+>
+  <Header />
+  <main>
+    <ServiceHero
+      eyebrow="Services"
+      heading="Solar + home upgrades."
+      subhead="Great Lakes Solar is your single licensed contractor for the work that surrounds a solar install. Fewer crews to manage, fewer surprises, one team accountable."
+      image="/IMG_0836.JPG"
+      imageAlt="Residential home with rooftop solar installation and service van"
+      ctaLabel="Start a Consultation"
+    />
+
+    <section class="py-16 sm:py-20" aria-labelledby="services-grid-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl" data-reveal="fade-up">
+          <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+            What we offer
+          </p>
+          <h2
+            id="services-grid-heading"
+            class="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight"
+          >
+            Six services. One team. Built around your home.
+          </h2>
+          <p class="mt-5 text-lg text-slate-600">
+            Solar is the foundation of what we do. The rest is the work most
+            solar companies hand off to subcontractors — we keep it in house.
+          </p>
+        </div>
+
+        <div
+          class="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          data-reveal-stagger="100"
+        >
+          {services.map((s) => <ServiceCard {...s} />)}
+        </div>
+      </div>
+    </section>
+
+    <Certifications />
+
+    <CtaBand
+      eyebrow="Not sure where to start?"
+      heading="Start with a single conversation."
+      body="Tell us what you’re trying to solve — solar, a leaky roof, drafty windows, a charger you’ve been putting off. We’ll walk you through what makes sense and what doesn’t."
+      ctaLabel="Schedule a Consultation"
+      ctaHref="/contact"
+    />
+  </main>
+  <Footer />
+</BaseLayout>
