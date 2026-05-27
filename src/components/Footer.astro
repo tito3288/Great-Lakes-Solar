@@ -1,4 +1,6 @@
 ---
+import { site } from "../lib/site";
+
 const year = new Date().getFullYear();
 
 const quickLinks = [
@@ -99,6 +101,23 @@ const services = [
         >
           Schedule a Consultation
         </a>
+        <dl class="mt-6 space-y-1.5 text-sm text-slate-600">
+          <div class="flex gap-2">
+            <dt class="font-semibold text-ink">Call</dt>
+            <dd>
+              <a
+                href={site.phoneHref}
+                class="hover:text-teal transition-colors"
+              >
+                {site.phoneDisplay}
+              </a>
+            </dd>
+          </div>
+          <div class="flex gap-2">
+            <dt class="font-semibold text-ink">Hours</dt>
+            <dd>{site.hours}</dd>
+          </div>
+        </dl>
       </div>
     </div>
 
@@ -106,7 +125,7 @@ const services = [
       class="mt-12 sm:mt-14 pt-6 border-t border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500"
     >
       <p>&copy; {year} Great Lakes Solar. All rights reserved.</p>
-      <p>Licensed, bonded, and insured. Serving homeowners across the Great Lakes region.</p>
+      <p>Licensed, bonded, and insured. Serving {site.serviceArea}.</p>
     </div>
   </div>
 </footer>

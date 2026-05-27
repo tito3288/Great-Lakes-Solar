@@ -6,11 +6,18 @@ interface Props {
 const { variant = "light" } = Astro.props;
 
 const partners = [
-  { name: "Tesla", logo: "/logos/tesla.svg" },
-  { name: "SolarEdge", logo: "/logos/solaredge.svg" },
-  { name: "Enphase", logo: "/logos/enphase.svg" },
-  { name: "Franklin", logo: "/logos/franklin.svg" },
-  { name: "GM Energy", logo: "/logos/gm-energy.svg" },
+  { name: "Silfab Solar", logo: "/partner-logos/download-1.png" },
+  { name: "Qcells", logo: "/partner-logos/post-featured_cropped.webp" },
+  { name: "Jinko Solar", logo: "/partner-logos/logony.png" },
+  { name: "SolarEdge", logo: "/partner-logos/SolarEdge_logo_header_new_0.png" },
+  { name: "Enphase", logo: "/partner-logos/Enphase-Logo.png" },
+  { name: "Tesla", logo: "/partner-logos/tesla-logo.webp" },
+  { name: "Sunrun", logo: "/partner-logos/Sunrun_Logotype_WEB-400x200-1.jpg" },
+  { name: "Sunnova", logo: "/partner-logos/SunnovaLogoColor.png" },
+  { name: "Mosaic", logo: "/partner-logos/Mosaic_logo-STD-website_R-ball-300x54-1.png" },
+  { name: "EverBright", logo: "/partner-logos/Everbright-logo_h_R_4c-2.png" },
+  { name: "Aurora", logo: "/partner-logos/aurora-logo-new.jpg" },
+  { name: "RockIt", logo: "/partner-logos/RockItProductLogo-01.png" },
 ];
 
 const badges = [
@@ -29,7 +36,7 @@ const dividerClass =
   variant === "dark" ? "border-white/10" : "border-black/10";
 const badgeTextClass =
   variant === "dark" ? "text-white/80" : "text-slate-600";
-const logoBgClass =
+const stripClass =
   variant === "dark" ? "bg-white/5" : "bg-white";
 ---
 
@@ -46,29 +53,44 @@ const logoBgClass =
         Partnered with the names that set the standard.
       </h2>
     </div>
+  </div>
 
-    <ul
-      class="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 list-none p-0"
-      data-reveal-stagger="80"
-    >
+  <div
+    class={`marquee mt-8 sm:mt-10 ${stripClass} py-6 sm:py-8`}
+    data-reveal="fade-up"
+  >
+    <ul class="marquee-track list-none p-0 m-0">
+      {
+        partners.map((p) => (
+          <li class="shrink-0 flex items-center justify-center px-8 sm:px-12">
+            <img
+              src={p.logo}
+              alt={p.name}
+              class="h-10 sm:h-12 w-auto object-contain"
+              loading="lazy"
+            />
+          </li>
+        ))
+      }
       {
         partners.map((p) => (
           <li
-            class={`${logoBgClass} rounded-2xl h-20 sm:h-24 flex items-center justify-center border border-black/5 shadow-sm`}
-            data-reveal="fade-up"
+            class="shrink-0 flex items-center justify-center px-8 sm:px-12"
+            aria-hidden="true"
           >
             <img
               src={p.logo}
-              alt={`${p.name} certified partner`}
-              class="max-h-10 sm:max-h-12 max-w-[70%] object-contain opacity-90"
+              alt=""
+              class="h-10 sm:h-12 w-auto object-contain"
               loading="lazy"
-              onerror="this.outerHTML='<span class=\'text-sm font-semibold tracking-wide text-slate-500\'>' + this.alt.replace(' certified partner', '') + '</span>'"
             />
           </li>
         ))
       }
     </ul>
+  </div>
 
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div
       class={`mt-8 sm:mt-10 pt-6 sm:pt-8 border-t ${dividerClass} flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-3 text-sm sm:text-base ${badgeTextClass}`}
       data-reveal="fade-up"
@@ -88,3 +110,57 @@ const logoBgClass =
     </div>
   </div>
 </section>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 40s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+      overflow-x: auto;
+    }
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      gap: 0.5rem 0;
+    }
+  }
+</style>

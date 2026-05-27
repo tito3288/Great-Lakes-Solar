@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ServiceHero from "../components/ServiceHero.astro";
+import { site } from "../lib/site";
 ---
 
 <BaseLayout
@@ -156,12 +157,19 @@ import ServiceHero from "../components/ServiceHero.astro";
               </h3>
               <p class="mt-4 text-slate-600 leading-relaxed">
                 A team member will review your note and reach out to schedule a
-                consultation. If it’s urgent, email us directly at{" "}
+                consultation. If it’s urgent, call us at{" "}
                 <a
-                  href="mailto:devon@greatlakessolarpower.com"
+                  href={site.phoneHref}
                   class="text-teal underline hover:text-teal/80"
                 >
-                  devon@greatlakessolarpower.com
+                  {site.phoneDisplay}
+                </a>{" "}
+                or email{" "}
+                <a
+                  href={`mailto:${site.email}`}
+                  class="text-teal underline hover:text-teal/80"
+                >
+                  {site.email}
                 </a>
                 .
               </p>
@@ -231,17 +239,30 @@ import ServiceHero from "../components/ServiceHero.astro";
 
               <div class="mt-8 pt-6 border-t border-white/10 space-y-3 text-sm text-white/80">
                 <p class="flex items-start gap-3">
-                  <span class="text-amber shrink-0" aria-hidden="true">✉</span>
+                  <span class="text-amber shrink-0" aria-hidden="true">☎</span>
                   <a
-                    href="mailto:devon@greatlakessolarpower.com"
+                    href={site.phoneHref}
                     class="hover:text-white transition-colors"
                   >
-                    devon@greatlakessolarpower.com
+                    {site.phoneDisplay}
                   </a>
                 </p>
                 <p class="flex items-start gap-3">
+                  <span class="text-amber shrink-0" aria-hidden="true">✉</span>
+                  <a
+                    href={`mailto:${site.email}`}
+                    class="hover:text-white transition-colors"
+                  >
+                    {site.email}
+                  </a>
+                </p>
+                <p class="flex items-start gap-3">
+                  <span class="text-amber shrink-0" aria-hidden="true">◷</span>
+                  {site.hours}
+                </p>
+                <p class="flex items-start gap-3">
                   <span class="text-amber shrink-0" aria-hidden="true">◎</span>
-                  Serving homeowners across the Great Lakes region
+                  Serving {site.serviceArea}
                 </p>
                 <p class="flex items-start gap-3">
                   <span class="text-amber shrink-0" aria-hidden="true">✓</span>
