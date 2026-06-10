@@ -1,0 +1,57 @@
+---
+import { site } from "../lib/site";
+---
+
+<section id="no-money-down" class="py-16 sm:py-20 bg-ink text-white" aria-labelledby="no-money-down-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-10 lg:gap-14 items-center">
+      <div data-reveal="fade-up">
+        <p class="text-xs uppercase tracking-[.25em] text-amber font-bold">
+          Solar without the upfront hit
+        </p>
+        <h2
+          id="no-money-down-heading"
+          class="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight"
+        >
+          Go solar with no money down.
+        </h2>
+        <p class="mt-5 text-lg sm:text-xl text-white/75 leading-relaxed max-w-3xl">
+          Our program does not require one penny out of pocket. Instead of adding a
+          new bill to your budget, we help redirect what you are already spending
+          with the utility company and use it to move your home to solar.
+        </p>
+      </div>
+
+      <div
+        class="bg-white text-ink rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-2xl"
+        data-reveal="fade-up"
+        style="--reveal-delay: 140ms;"
+      >
+        <p class="text-[4.5rem] sm:text-[6rem] leading-none font-semibold text-amber tracking-tight">
+          $0
+        </p>
+        <h3 class="mt-4 text-2xl sm:text-3xl font-semibold leading-tight">
+          Most homeowners start by replacing what they already pay.
+        </h3>
+        <p class="mt-4 text-slate-600 leading-relaxed">
+          In many cases, the solar payment is less than the current utility bill.
+          Great Lakes Solar walks you through the numbers before you decide.
+        </p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex justify-center items-center bg-amber text-ink rounded-full px-6 py-3 font-bold hover:bg-amber/90 transition-colors"
+          >
+            See If You Qualify
+          </a>
+          <a
+            href={site.phoneHref}
+            class="inline-flex justify-center items-center border border-ink/15 rounded-full px-6 py-3 font-bold hover:bg-sand transition-colors"
+          >
+            {site.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

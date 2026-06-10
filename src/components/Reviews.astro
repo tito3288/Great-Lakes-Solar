@@ -4,19 +4,19 @@ const reviews = [
     quote:
       "The team explained everything in plain language and stuck to what they said the system would do. No surprises, no pressure — just a clean install that works.",
     name: "M. Anderson",
-    location: "Grand Rapids, MI",
+    location: "Crown Point, IN",
   },
   {
     quote:
       "We added a whole-home battery alongside the panels. When the grid went down last winter, we never noticed. Worth every penny.",
     name: "J. & L. Carter",
-    location: "Holland, MI",
+    location: "Valparaiso, IN",
   },
   {
     quote:
       "I priced solar with three companies. Great Lakes was the only one that put the production guarantee and 25-year coverage in writing without me asking.",
     name: "R. Patel",
-    location: "Ann Arbor, MI",
+    location: "Merrillville, IN",
   },
 ];
 ---
@@ -35,8 +35,38 @@ const reviews = [
       </h2>
     </div>
 
+    <div
+      class="mt-10 sm:mt-12 grid lg:grid-cols-[1.15fr_.85fr] gap-6 lg:gap-8 items-center"
+      data-reveal="fade-up"
+      style="--reveal-delay: 100ms;"
+    >
+      <div class="bg-ink rounded-[2rem] overflow-hidden shadow-sm">
+        <video
+          class="w-full aspect-video bg-ink object-contain"
+          src="/testimonials/customer-testimonial-01.mov"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <a href="/testimonials/customer-testimonial-01.mov">Watch the homeowner testimonial video</a>
+        </video>
+      </div>
+      <div class="bg-white rounded-[2rem] p-6 sm:p-8 border border-black/5 shadow-sm">
+        <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
+          Featured testimonial
+        </p>
+        <h3 class="mt-4 text-3xl sm:text-4xl font-semibold leading-tight">
+          Hear it directly from a Great Lakes Solar homeowner.
+        </h3>
+        <p class="mt-4 text-lg leading-relaxed text-slate-600">
+          A real client story gives new homeowners a better sense of the process,
+          the team, and what it feels like after the system is installed.
+        </p>
+      </div>
+    </div>
+
     <ul
-      class="mt-10 sm:mt-12 grid gap-5 md:grid-cols-3 list-none p-0"
+      class="mt-8 sm:mt-10 grid gap-5 md:grid-cols-3 list-none p-0"
       data-reveal-stagger="120"
     >
       {

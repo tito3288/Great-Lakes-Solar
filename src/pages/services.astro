@@ -65,21 +65,23 @@ const services = [
       ctaLabel="Start a Consultation"
     />
 
-    <section class="py-16 sm:py-20" aria-labelledby="services-grid-heading">
+    <section id="home-improvement" class="py-16 sm:py-20" aria-labelledby="home-improvement-heading">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="max-w-3xl" data-reveal="fade-up">
           <p class="text-xs uppercase tracking-[.25em] text-teal font-bold">
-            What we offer
+            Home improvement
           </p>
           <h2
-            id="services-grid-heading"
+            id="home-improvement-heading"
             class="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight"
           >
-            Six services. One team. Built around your home.
+            Solar, roofing, windows, doors, and the work around them.
           </h2>
           <p class="mt-5 text-lg text-slate-600">
-            Solar is the foundation of what we do. The rest is the work most
-            solar companies hand off to subcontractors — we keep it in house.
+            Solar is our specialty. Home improvement is the full picture. Great
+            Lakes Solar helps homeowners improve the whole property, from the
+            system on the roof to the roof itself, windows, doors, EV charging,
+            tree work, and other upgrades that protect your investment.
           </p>
         </div>
 
@@ -88,6 +90,28 @@ const services = [
           data-reveal-stagger="100"
         >
           {services.map((s) => <ServiceCard {...s} />)}
+        </div>
+
+        <div
+          class="mt-8 sm:mt-10 bg-white rounded-[2rem] p-6 sm:p-8 border border-black/5 shadow-sm flex flex-col lg:flex-row gap-5 lg:gap-8 lg:items-center lg:justify-between"
+          data-reveal="fade-up"
+        >
+          <div class="max-w-3xl">
+            <h3 class="text-2xl sm:text-3xl font-semibold leading-tight">
+              Don’t see your project listed?
+            </h3>
+            <p class="mt-3 text-lg leading-relaxed text-slate-600">
+              Tell us what you want to improve. We handle a wide range of home
+              improvement work, and if your project needs a specialized path,
+              we’ll help you figure out the right next step.
+            </p>
+          </div>
+          <a
+            href="/contact"
+            class="inline-flex justify-center items-center bg-amber text-ink rounded-full px-7 py-3.5 font-bold hover:bg-amber/90 transition-colors shrink-0"
+          >
+            Get a Home Improvement Quote
+          </a>
         </div>
       </div>
     </section>

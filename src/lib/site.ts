@@ -3,6 +3,6 @@ export const site = {
   phoneHref: "tel:+12192291397",
   hours: "9 AM – 9 PM",
   email: "devon@greatlakessolarpower.com",
-  serviceArea: "Indiana, Ohio & Illinois — Michigan coming soon",
+  serviceArea: "Indiana, Ohio & Illinois",
   serviceAreaShort: "IN · OH · IL",
 } as const;
