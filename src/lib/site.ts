@@ -1,6 +1,6 @@
 export const site = {
-  phoneDisplay: "(219) 229-1397",
-  phoneHref: "tel:+12192291397",
+  phoneDisplay: "(219) 380-3818",
+  phoneHref: "tel:+12193803818",
   hours: "9 AM – 9 PM",
   email: "devon@greatlakessolarpower.com",
   serviceArea: "Indiana, Ohio & Illinois",
